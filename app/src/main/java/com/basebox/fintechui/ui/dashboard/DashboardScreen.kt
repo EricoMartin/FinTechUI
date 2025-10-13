@@ -327,7 +327,7 @@ val transactions = listOf(
     Transaction("Reward", "+149.87 USD", "Received", "Success", "15:22:55 • 2025-06-19"),
     Transaction("Deposit", "-289.99 USD", "Fail", "Failed", "08:12:49 • 2025-06-16"),
     Transaction("Credit", "+462.43 USD", "Received", "Success", "15:22:55 • 2025-06-19"),
-    Transaction("Withdrawal", "-99.99 USD", "Fail", "Failed", "08:12:49 • 2025-06-16")
+    Transaction("Withdrawal", "-99.99 USD", "Received", "Success", "08:12:49 • 2025-06-16")
 )
 
 @Composable
