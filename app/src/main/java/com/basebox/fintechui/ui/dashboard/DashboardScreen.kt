@@ -215,7 +215,7 @@ fun BalanceCard() {
                 Crossfade(targetState = showBalance) { visible ->
                     Text(
                         modifier = Modifier.padding(top = 12.dp),
-                        text = if (showBalance) "$34,567.90" else "******",
+                        text = if (visible) "$34,567.90" else "******",
                         style = MaterialTheme.typography.headlineLarge.copy(
                             color = Color.White,
                             fontWeight = FontWeight.Bold
