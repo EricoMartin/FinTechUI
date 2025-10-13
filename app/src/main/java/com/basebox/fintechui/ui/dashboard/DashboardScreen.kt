@@ -1,6 +1,6 @@
 package com.basebox.fintechui.ui.dashboard
 
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,7 +24,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -151,6 +150,7 @@ fun TopSection() {
 
 @Composable
 fun BalanceCard() {
+    var showBalance by remember { mutableStateOf(false) }
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -178,6 +178,24 @@ fun BalanceCard() {
                         text = "Est. Total Value",
                         style = MaterialTheme.typography.labelMedium.copy(color = Color.White)
                     )
+                    IconButton(
+                        onClick = { showBalance = !showBalance },
+                        colors = IconButtonDefaults.iconButtonColors(contentColor = Color.White),
+                        modifier = Modifier.padding(end = 60.dp)
+                            .align(Alignment.CenterVertically)
+                    ) {
+                        Icon(
+                            imageVector = if (showBalance) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = if (showBalance) "Hide balance" else "Show balance",
+                            tint = Color.White,
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .width(24.dp)
+                            .padding(start = 16.dp)
+                    )
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
@@ -190,22 +208,25 @@ fun BalanceCard() {
                             style = MaterialTheme.typography.labelSmall
                         )
                     }
+
                 }
 
                 // Mid text directly below the top section
-                Text(
-                    modifier = Modifier.padding(top = 12.dp),
-                    text = "$34,567.90",
-                    style = MaterialTheme.typography.headlineLarge.copy(
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
+                Crossfade(targetState = showBalance) { visible ->
+                    Text(
+                        modifier = Modifier.padding(top = 12.dp),
+                        text = if (showBalance) "$34,567.90" else "******",
+                        style = MaterialTheme.typography.headlineLarge.copy(
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
+                        )
                     )
-                )
+                }
             }
 
             // 🔹 Bottom section (pushed down)
             Text(
-                text = "$8,784.13 (8.78%)",
+                text = if (showBalance) "$8,784.13 (8.78%)" else "******",
                 style = MaterialTheme.typography.labelMedium.copy(
                     color = Color.White.copy(alpha = 0.9f)
                 )
@@ -229,7 +250,7 @@ fun ActionButtons(onActionClick: (String) -> Unit) {
                 modifier = Modifier.weight(1f).padding(horizontal = 2.dp)
             ) {
                 Icon(icon, contentDescription = title)
-                Spacer(Modifier.width(12.dp))
+                Spacer(Modifier.width(0.dp))
                 Text(title,
                     maxLines = 1, fontSize = 8.sp)
             }
@@ -347,7 +368,7 @@ fun TransactionItem(transaction: Transaction) {
 
 @Composable
 fun WalletBottomNavBar() {
-    var selectedItem by remember { mutableStateOf(0) }
+    var selectedItem by remember { mutableIntStateOf(0) }
     val gradientBrush = Brush.linearGradient(listOf(Color(0xFFFF6B81), Color(0xFFFF8FA2)))
 
     NavigationBar {
