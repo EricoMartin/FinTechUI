@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!-- res/values/themes.xml -->
+    <style name="Theme.FinTechUI" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Map your custom attributes to the Material Design colors -->
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+
+        <!-- ... other theme items -->
+    </style>
+</resources>

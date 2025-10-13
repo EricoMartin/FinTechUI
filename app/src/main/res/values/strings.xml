@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidBaseApp</string>
+    <string name="feedback_title">Feedback Demo</string>
+    <string name="feedback_description">Tap the button to experience haptic, audible and visual feedback.</string>
+    <string name="tap_to_feedback">Tap to feedback</string>
+    <string name="enrolled_message">Action complete</string>
+</resources>
