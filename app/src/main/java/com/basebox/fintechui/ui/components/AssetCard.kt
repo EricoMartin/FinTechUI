@@ -34,7 +34,7 @@ fun AssetCard(name: String, value: String, icon: Int) {
         shape = RoundedCornerShape(16.dp)
     ) {
         Row(
-            modifier = Modifier.padding(top = 8.dp, bottom = 16.dp, start = 16.dp, end = 16.dp),
+            modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(painter = painterResource(icon), contentDescription = name, modifier = Modifier.size(32.dp))
