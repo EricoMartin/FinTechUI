@@ -82,5 +82,4 @@ dependencies {
     // ✅ Accompanist (if you need system UI control or pager)
     implementation(libs.accompanist.systemuicontroller)
 
-
 }

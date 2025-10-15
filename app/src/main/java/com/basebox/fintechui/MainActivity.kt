@@ -25,7 +25,6 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding)
                     )
                     com.basebox.fintechui.ui.navigation.AppNavHost()
-//                    WalletDashboardScreen()
                 }
             }
         }
