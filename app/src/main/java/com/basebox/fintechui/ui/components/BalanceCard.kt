@@ -48,20 +48,19 @@ fun BalanceCard(balanceUiStateFlow: StateFlow<BalanceUiState>, onToggle: () -> U
         Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
             Column {
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = "Est. Total Value", style = MaterialTheme.typography.labelMedium.copy(color = Color.White))
-                    // Use the 'show' property from the collected state object
-                    IconButton(onClick = onToggle) { Icon(imageVector = if (balanceUi.show) Icons.Default.Visibility else Icons.Default.VisibilityOff, contentDescription = null, tint = Color.White) }
+
+                    EyeIconSection(onToggle, balanceUi)
                     Box(
                         modifier = Modifier
                             .align(Alignment.CenterVertically)
-                            .width(24.dp)
+                            .width(48.dp)
                             .padding(start = 16.dp)
                     )
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(12.dp))
                             .background(Color.White.copy(alpha = 0.2f))
-                            .padding(horizontal = 8.dp, vertical = 4.dp)
+                            .padding(horizontal = 8.dp)
                     ) {
                         Text(
                             text = "USD",
@@ -79,4 +78,25 @@ fun BalanceCard(balanceUiStateFlow: StateFlow<BalanceUiState>, onToggle: () -> U
             Text(text = if (balanceUi.show) balanceUi.totalChange else "******", style = MaterialTheme.typography.labelMedium.copy(color = Color.White.copy(alpha = 0.9f)))
         }
     }
+}
+
+
+@Composable
+fun EyeIconSection(onToggle: () -> Unit, balanceUi: BalanceUiState){
+    Row(modifier = Modifier.width(180.dp).height(24.dp)) {
+        Text(
+            text = "Est. Total Value",
+            style = MaterialTheme.typography.labelMedium.copy(color = Color.White)
+        )
+        IconButton(onClick = onToggle) {
+            Icon(
+                imageVector = if (balanceUi.show) Icons.Default.Visibility
+                    else Icons.Default.VisibilityOff,
+                contentDescription = if (balanceUi.show) "View Balance" else "Hide Balance",
+                tint = Color.White
+            )
+        }
+
+    }
+
 }

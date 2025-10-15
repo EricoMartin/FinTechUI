@@ -23,13 +23,13 @@ import androidx.compose.ui.unit.dp
 import com.basebox.fintechui.R
 
 @Composable
-fun TopSection(userName: String = "Dianne Russell") {
+fun TopSection(modifier: Modifier = Modifier, userName: String = "Dianne Russell") {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
             Image(
                 painter = painterResource(id = R.drawable.sample_profile),
                 contentDescription = "User",

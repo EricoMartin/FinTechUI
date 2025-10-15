@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             FinTechUITheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Text(
-                        text = "Hello World",
+                        text = "FinTechUI App",
                         modifier = Modifier.padding(innerPadding)
                     )
                     com.basebox.fintechui.ui.navigation.AppNavHost()
