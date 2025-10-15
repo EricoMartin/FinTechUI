@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.basebox.fintechui.ui.components.ActionButtons
@@ -31,7 +30,7 @@ import com.basebox.fintechui.ui.viewmodel.WalletViewModel
 @Composable
 fun WalletDashboardScreen(viewModel: WalletViewModel) {
     val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
+//    val scope = rememberCoroutineScope()
     val transactions by viewModel.transactions.collectAsState()
     val assets by viewModel.assets.collectAsState()
 
